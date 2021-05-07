@@ -1,0 +1,5 @@
+package br.com.jmccursos.loja.modelo;
+
+public class Produto {
+
+}

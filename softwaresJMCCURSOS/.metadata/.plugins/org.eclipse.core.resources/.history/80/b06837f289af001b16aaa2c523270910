@@ -1,0 +1,30 @@
+package br.com.jmccursos.loja.testes;
+
+import java.math.BigDecimal;
+
+import javax.persistence.EntityManager;
+
+import br.com.jmccursos.loja.dao.ProdutoDao;
+import br.com.jmccursos.loja.modelo.Produto;
+
+public class CadastroProdutos {
+
+	public static void main(String[] args) {
+		
+		Produto celular = new Produto();
+		celular.setNome("Motora Z10");
+		celular.setDescricao("Com tecnologia de g6");
+		celular.setPreco(new BigDecimal("1500"));
+		
+		EntityManager em=JPAUtil
+				
+		ProdutoDao dao = new ProdutoDao(em);
+		em.getTransaction().begin();
+		dao.cadastrar(celular);
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+
+	}
+
+}

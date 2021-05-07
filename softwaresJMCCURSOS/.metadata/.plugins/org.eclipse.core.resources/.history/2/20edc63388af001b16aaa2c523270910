@@ -1,0 +1,5 @@
+package br.com.jmccursos.loja.dao;
+
+public class ProdutoDao {
+
+}
