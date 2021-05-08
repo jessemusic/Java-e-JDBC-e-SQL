@@ -1,0 +1,13 @@
+package br.com.jmccursos.loja.modelo;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+public class Categoria {
+	
+	@Entity
+	@Table(name="categorias")
+	private Long id;
+	private String nome;
+	
+}
