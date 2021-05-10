@@ -73,16 +73,15 @@ public class ProdutoDao {
 		TypedQuery<Produto> query = em.createQuery(jpql, Produto.class);
 		
 		if (nome != null && !nome.trim().isEmpty()) {
-			query.setParameter("nome", nome);
+			query.setParameter("nome", query);
 		}if (preco != null) {
 			
-			query.setParameter("preco", preco);
+			query.setParameter("preco", query);
 		}
 		if (dataCadastro != null) {
 			
-			query.setParameter("dataCadastro", dataCadastro);
+			query.setParameter("dataCadastro", query);
 		}
-		return query.getResultList();
 
 	}
 	
