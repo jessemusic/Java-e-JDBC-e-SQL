@@ -15,7 +15,6 @@
 				value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="" />
-			
 			<!-- https://docs.jboss.org/hibernate/orm/5.4/javadocs/org/hibernate/dialect/package-summary.html -->
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.MySQL8Dialect" />

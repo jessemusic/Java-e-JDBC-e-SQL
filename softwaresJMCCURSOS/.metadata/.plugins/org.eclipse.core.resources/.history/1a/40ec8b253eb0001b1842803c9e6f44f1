@@ -1,0 +1,19 @@
+package br.com.jmccursos.loja.dao;
+
+import javax.persistence.EntityManager;
+
+import br.com.jmccursos.loja.modelo.Pedido;
+
+public class CleinteDao {
+	private EntityManager em;
+	
+	public CleinteDao(EntityManager em) {
+		this.em=em;
+	
+	}
+	public void cadastrar(Pedido pedido) {
+		this.em.persist(pedido);
+	}
+	
+	
+}

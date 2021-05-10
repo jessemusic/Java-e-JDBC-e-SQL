@@ -15,15 +15,15 @@ public class CadastroProdutos {
 
 	public static void main(String[] args) {
 		
-	//	cadastrarProduto();
+		cadastrarProduto();
 		EntityManager em=JPAUtil.getEntityManager();
 		ProdutoDao produtoDao = new ProdutoDao(em);
 
-//		Produto p = produtoDao.buscarPorId(1l);
-//		System.out.println(p.getPreco());
-//		
-//		List<Produto> todos = produtoDao.buscarPorNomeDaCategoria("CELULARES");
-//		todos.forEach(p2 -> System.out.println(p2.getNome()));
+		Produto p = produtoDao.buscarPorId(1l);
+		System.out.println(p.getPreco());
+		
+		List<Produto> todos = produtoDao.buscarPorNomeDaCategoria("CELULARES");
+		todos.forEach(p2 -> System.out.println(p2.getNome()));
 		
 		BigDecimal precoDoProduto = produtoDao.buscarPrecoDoProdutoComNome("Motora Z10");
 		System.out.println(precoDoProduto);
@@ -31,15 +31,24 @@ public class CadastroProdutos {
 	}
 
 	private static void cadastrarProduto() {
+		
 		Categoria celulares = new Categoria("CELULARES");		
 		Produto celular = new Produto("Motora Z10","Com tecnologia de g6",new BigDecimal("1500"),celulares );
 		
+				
 		EntityManager em=JPAUtil.getEntityManager();
 		ProdutoDao produtoDao = new ProdutoDao(em);
 		CategoriaDao categoriaDao = new CategoriaDao(em);
 		
-		
 		em.getTransaction().begin();
+		
+		categoriaDao.cadastrar(celulares);
+		produtoDao.cadastrar(celular);
+		
+		em.getTransaction().commit();
+		em.close();
+		
+		
 		
 		
 	}

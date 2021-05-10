@@ -1,0 +1,70 @@
+package br.com.jmccursos.loja.testes;
+
+import java.math.BigDecimal;
+
+import javax.persistence.EntityManager;
+
+import br.com.jmccursos.loja.dao.CategoriaDao;
+import br.com.jmccursos.loja.dao.ClienteDao;
+import br.com.jmccursos.loja.dao.PedidoDao;
+import br.com.jmccursos.loja.dao.ProdutoDao;
+import br.com.jmccursos.loja.modelo.Categoria;
+import br.com.jmccursos.loja.modelo.Cliente;
+import br.com.jmccursos.loja.modelo.ItemPedido;
+import br.com.jmccursos.loja.modelo.Pedido;
+import br.com.jmccursos.loja.modelo.Produto;
+import br.com.jmccursos.loja.util.JPAUtil;
+
+public class CadastroDePedido {
+
+	public static void main(String[] args) {
+		popularBancoDeDados();
+		EntityManager em=JPAUtil.getEntityManager();
+		ProdutoDao produtoDao = new ProdutoDao(em);
+		ClienteDao clienteDao = new ClienteDao(em);
+		
+		
+		Produto produto = produtoDao.buscarPorId(1l);		
+		Cliente cliente = clienteDao.buscarPorId(1l);
+		
+		em.getTransaction().begin();
+		
+		Pedido pedido = new Pedido(cliente);
+		pedido.adicionarItem(new ItemPedido(10, pedido, produto));
+		
+		PedidoDao pedidoDao = new PedidoDao(em);
+		pedidoDao.cadastrar(pedido);
+		
+		em.getTransaction().commit();
+		
+		BigDecimal totalVendido = pedidoDao.valorTotalVendido();
+		System.out.println("VALOR TOTAL: "+ totalVendido);
+	}
+	
+	private static void popularBancoDeDados() {
+		
+		Categoria celulares = new Categoria("CELULARES");		
+		Produto celular = new Produto("Motora Z10","Com tecnologia de g6",new BigDecimal("1500"),celulares );
+		
+		Cliente cliente = new Cliente("JesseMar","123456");
+		
+		EntityManager em=JPAUtil.getEntityManager();
+		ProdutoDao produtoDao = new ProdutoDao(em);
+		CategoriaDao categoriaDao = new CategoriaDao(em);
+		ClienteDao clienteDao = new ClienteDao(em);
+		
+		em.getTransaction().begin();
+		
+		categoriaDao.cadastrar(celulares);
+		produtoDao.cadastrar(celular);
+		clienteDao.cadastrar(cliente);
+		
+		em.getTransaction().commit();
+		em.close();
+		
+		
+		
+		
+	}
+
+}

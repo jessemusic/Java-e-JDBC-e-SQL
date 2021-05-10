@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
-    <fullyQualifiedTypeName name="javax.persistence.Table"/>
-    <fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
-    <fullyQualifiedTypeName name="java.math.BigDecimal"/>
     <fullyQualifiedTypeName name="javax.persistence.Persistence"/>
-    <fullyQualifiedTypeName name="br.com.jmccursos.loja.dao.ProdutoDao"/>
     <fullyQualifiedTypeName name="javax.persistence.EntityManagerFactory"/>
     <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
     <fullyQualifiedTypeName name="br.com.jmccursos.loja.util.JPAUtil"/>
     <fullyQualifiedTypeName name="java.time.LocalDate"/>
-    <fullyQualifiedTypeName name="br.com.jmccursos.loja.modelo.Categoria"/>
     <fullyQualifiedTypeName name="javax.persistence.Enumerated"/>
+    <fullyQualifiedTypeName name="br.com.jmccursos.loja.modelo.Categoria"/>
+    <fullyQualifiedTypeName name="br.com.jmccursos.loja.dao.ProdutoDao"/>
+    <fullyQualifiedTypeName name="br.com.jmccursos.loja.dao.CategoriaDao"/>
+    <fullyQualifiedTypeName name="javax.persistence.ManyToMany"/>
+    <fullyQualifiedTypeName name="javax.persistence.JoinTable"/>
+    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
+    <fullyQualifiedTypeName name="javax.persistence.Table"/>
+    <fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
+    <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
+    <fullyQualifiedTypeName name="javax.persistence.OneToMany"/>
+    <fullyQualifiedTypeName name="br.com.jmccursos.loja.modelo.ItemPedido"/>
+    <fullyQualifiedTypeName name="br.com.jmccursos.loja.modelo.Pedido"/>
+    <fullyQualifiedTypeName name="br.com.jmccursos.loja.dao.PedidoDao"/>
+    <fullyQualifiedTypeName name="br.com.jmccursos.loja.modelo.Cliente"/>
+    <fullyQualifiedTypeName name="br.com.jmccursos.loja.dao.ClienteDao"/>
+    <fullyQualifiedTypeName name="br.com.jmccursos.loja.modelo.Produto"/>
+    <fullyQualifiedTypeName name="javax.persistence.Column"/>
+    <fullyQualifiedTypeName name="java.math.BigDecimal"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="br.com.jmccursos.loja.vo.relatorioDeVendasVo"/>
+    <fullyQualifiedTypeName name="org.hibernate.internal.build.AllowSysOut"/>
 </qualifiedTypeNameHistroy>

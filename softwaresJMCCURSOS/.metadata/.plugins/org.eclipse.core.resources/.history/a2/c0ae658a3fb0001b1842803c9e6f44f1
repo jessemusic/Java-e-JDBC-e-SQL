@@ -1,0 +1,25 @@
+package br.com.jmccursos.loja.dao;
+
+import javax.persistence.EntityManager;
+
+import br.com.jmccursos.loja.modelo.Cliente;
+import br.com.jmccursos.loja.modelo.Produto;
+
+public class ClienteDao {
+	private EntityManager em;
+	
+	public ClienteDao(EntityManager em) {
+		this.em=em;
+	
+	}
+	public void cadastrar(Cliente cliente) {
+		this.em.persist(cliente);
+	}
+	
+
+	public Produto buscarPorId(Long id) {
+		return em.find(Cliente.class, id);
+	}
+	
+	
+}
