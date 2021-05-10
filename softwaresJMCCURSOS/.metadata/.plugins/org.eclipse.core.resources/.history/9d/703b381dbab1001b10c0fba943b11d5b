@@ -12,6 +12,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.hibernate.type.descriptor.java.BigDecimalTypeDescriptor;
+
 import br.com.jmccursos.loja.modelo.Produto;
 
 public class ProdutoDao {
@@ -92,7 +94,7 @@ public class ProdutoDao {
 	public List<Produto> buscarPorParametrosComCriteria(String nome,BigDecimal preco, LocalDate dataCadastro ){
 		
 		CriteriaBuilder builder = em.getCriteriaBuilder();
-		CriteriaQuery<Produto> query = builder.createQuery(Produto.class);
+		CriteriaQuery<Tuple> query = builder.createTupleQuery();
 		Root<Produto> from = query.from(Produto.class);
 		Predicate filtros = builder.and();
 		if (nome != null && !nome.trim().isEmpty()) {

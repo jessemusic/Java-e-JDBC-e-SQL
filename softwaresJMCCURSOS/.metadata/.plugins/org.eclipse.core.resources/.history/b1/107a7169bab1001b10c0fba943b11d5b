@@ -92,7 +92,7 @@ public class ProdutoDao {
 	public List<Produto> buscarPorParametrosComCriteria(String nome,BigDecimal preco, LocalDate dataCadastro ){
 		
 		CriteriaBuilder builder = em.getCriteriaBuilder();
-		CriteriaQuery<Produto> query = builder.createQuery(Produto.class);
+		CriteriaQuery<Tuple> query = builder.createTupleQuery();
 		Root<Produto> from = query.from(Produto.class);
 		Predicate filtros = builder.and();
 		if (nome != null && !nome.trim().isEmpty()) {
