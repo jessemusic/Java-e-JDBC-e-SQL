@@ -23,7 +23,7 @@ public class Categoria {
 	}
 
 	public String getNome() {
-		return this.id.getNome();
+		return this.getNome();
 	}
 
 	
