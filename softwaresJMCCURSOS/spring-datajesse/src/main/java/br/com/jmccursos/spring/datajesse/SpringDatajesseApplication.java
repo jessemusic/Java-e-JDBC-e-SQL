@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import br.com.jmccursos.spring.datajesse.service.CrudCargoService;
 import br.com.jmccursos.spring.datajesse.service.CrudFuncionarioService;
 import br.com.jmccursos.spring.datajesse.service.CrudUnidadeDeTrabalhoService;
+import br.com.jmccursos.spring.datajesse.service.RelatorioFuncionarioDinamico;
 import br.com.jmccursos.spring.datajesse.service.RelatoriosService;
 @EnableJpaRepositories
 @SpringBootApplication
@@ -20,16 +21,22 @@ public class SpringDatajesseApplication implements CommandLineRunner {
 
 	private final CrudUnidadeDeTrabalhoService unidadeDeTrabalhoService;
 	private final RelatoriosService relatoriosService;
+	
+	private final RelatorioFuncionarioDinamico relatorioFuncionarioDinamico;
 
 	private Boolean system = true;
 
 
-	public SpringDatajesseApplication(CrudCargoService cargoService, CrudFuncionarioService funcionarioService,
-			CrudUnidadeDeTrabalhoService unidadeDeTrabalhoService, RelatoriosService relatoriosService) {
+	public SpringDatajesseApplication(CrudCargoService cargoService,
+			CrudFuncionarioService funcionarioService,
+			CrudUnidadeDeTrabalhoService unidadeDeTrabalhoService,
+			RelatoriosService relatoriosService,
+			RelatorioFuncionarioDinamico relatorioFuncionarioDinamico) {
 		this.cargoService = cargoService;
 		this.funcionarioService = funcionarioService;
 		this.unidadeDeTrabalhoService = unidadeDeTrabalhoService;
 		this.relatoriosService = relatoriosService;
+		this.relatorioFuncionarioDinamico = relatorioFuncionarioDinamico;
 	}
 
 	public static void main(String[] args) {
@@ -48,6 +55,7 @@ public class SpringDatajesseApplication implements CommandLineRunner {
 			System.out.println("2 - Funcionário");
 			System.out.println("3 - Unidade de Trabalho");
 			System.out.println("4 - Relatórios");
+			System.out.println("5 - Relatório dinâmico");
 			String action = sc.next();
 			if(isNumeric(action)==false) {
 				System.out.println("não é número o que você escolheu!");
@@ -65,6 +73,9 @@ public class SpringDatajesseApplication implements CommandLineRunner {
 					break;
 				case 4:
 					relatoriosService.inicial(sc);
+					break;
+				case 5:
+					relatorioFuncionarioDinamico.inicial(sc);
 					break;
 
 				default:
