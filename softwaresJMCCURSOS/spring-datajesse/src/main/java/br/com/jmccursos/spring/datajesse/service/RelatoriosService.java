@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import br.com.jmccursos.spring.datajesse.orm.Funcionario;
+import br.com.jmccursos.spring.datajesse.orm.FuncionarioProjecao;
 import br.com.jmccursos.spring.datajesse.repository.FuncionarioRepository;
 
 @Service
@@ -29,6 +30,8 @@ public class RelatoriosService {
 			System.out.println("0 - Sair");
 			System.out.println("1 - Busca funcionario por nome:");
 			System.out.println("2 - Busca funcionario por nome, data contratação e maior salário:");
+			System.out.println("3 - Busca  data contratação");
+			System.out.println("4 - Pesquisa funcionário salário ");
 			String action = sc.next();
 			if(isNumeric(action)==false) {
 				System.out.println("não é número o que você escolheu!");
@@ -43,6 +46,9 @@ public class RelatoriosService {
 					break;
 				case 3:
 					buscaFuncionarioDataContratacao(sc);
+					break;
+				case 4:
+					pesquisaFuncionarioSalario();
 					break;
 			
 				default:
@@ -84,13 +90,19 @@ public class RelatoriosService {
 				list.forEach(System.out::println);
 		
 	}
-	private void buscaFuncionarioDataContratacao(Scanner scanner) {
+	private void buscaFuncionarioDataContratacao(Scanner sc) {
 		System.out.println("Qual data contratacao deseja pesquisar");
-		String data = scanner.next();
+		String data = sc.next();
 		LocalDate localDate = LocalDate.parse(data, formatter);
 		
 		List<Funcionario> list = funcionarioRepository.findDataContratacaoMaior(localDate);
 		list.forEach(System.out::println);
+	}
+	
+	private void pesquisaFuncionarioSalario() {
+		List<FuncionarioProjecao> list = funcionarioRepository.findFuncionarioSalario();
+		list.forEach(f -> System.out.println("Funcionário: id: "
+		+ f.getId() + " | nome: "+ f.getNome() + " | salário: "+ f.getSalario()));
 	}
 	
 	
